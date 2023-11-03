@@ -4,6 +4,7 @@ import path from "node:path"
 import mongoose from "mongoose"
 import routerPeliculas from './routers/peliculas.routers.js'
 import {engine} from 'express-handlebars'
+import methodOverride from 'method-override'
 
 //! CONFIGURACIONES
 const app = express()
@@ -21,6 +22,7 @@ app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use("/api/peliculas", routerPeliculas)
+app.use(methodOverride('_method'))
 
 
 

@@ -30,7 +30,17 @@ async function obtenerTodasLasPeliculas(){
     }
 }
 
-const guardarPelicula = async (nuevaPelicula) => {
+async function obtenerPeliculaPorId(id){
+    try {
+        const pelicula = await peliculasModelo.findById(id).lean()
+        return pelicula
+    } catch (error) {
+        console.error(`Error en metodo de lectura de peliculas: [obtenerPeliculaPorId]`)
+        return null
+    }
+}
+
+async function guardarPelicula (nuevaPelicula){
     try {
 
         let pelicula = new peliculasModelo(nuevaPelicula)
@@ -44,7 +54,20 @@ const guardarPelicula = async (nuevaPelicula) => {
     }
 }
 
+async function actualizarPelicula(id, peliculaEditada){
+
+    try {
+        const pelicula = await peliculasModelo.findByIdAndUpdate(id, peliculaEditada)
+        return pelicula
+    } catch (error) {
+        console.log('[actualizarPelicula]: Error al querer actualizar la película', error)
+        return null
+    }
+}
+
 export default {
     obtenerTodasLasPeliculas,
-    guardarPelicula
+    obtenerPeliculaPorId,
+    guardarPelicula,
+    actualizarPelicula
 }
