@@ -1,24 +1,31 @@
 <table class="table">
-<h1>Listado de peliculas</h1>
-<a href="/api/peliculas/create" class="btn btn-info">Crear Pelicula</a>
+    <h1>Listado de peliculas</h1>
+    <a href="/api/peliculas/create" class="btn btn-info">Crear Pelicula</a>
     <thead>
         <tr>
-            
+
             <th scope="col">Nombre</th>
             <th scope="col">Año</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-{{#each peliculas}}
-        <tr>
-            <td>{{ this.title }}</td>
-            <td> {{ this.year }}</td>
-            <td>
-                <a class="btn btn-warning" href="/api/peliculas/edit/{{this._id}}">Editar</a>
-                <a class="btn btn-danger" href="/api/peliculas/edit/{{this._id}}">Eliminar</a>
-            </td>
-        </tr>
-{{/each}}
+        {{#each peliculas}}
+            <tr>
+                <td>{{ this.title }}</td>
+                <td>
+                    {{ this.year }}</td>
+                <td>
+                    <a class="btn btn-warning" href="/api/peliculas/edit/{{ this._id }}">Editar</a>
+                </td>
+                <td>
+                    <form action="/api/peliculas/{{ this._id }}?_method=DELETE" method="post">
+                        <button class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+
+
+            </tr>
+        {{/each}}
     </tbody>
 </table>

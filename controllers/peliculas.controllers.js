@@ -59,12 +59,12 @@ async function formularioEdicionPelicula(req, res) {
 
 async function actualizarPelicula(req, res) {
     const { id } = req.params
-    const producto = req.body
+    const pelicula = req.body
 
     try {
-        const productoEditado = await modelo.actualizarPelicula(id, producto)
+        const peliculaEditada = await modelo.actualizarPelicula(id, pelicula)
 
-        if ( !productoEditado ) {
+        if ( !peliculaEditada ) {
             return res.status(400).send('No se encontró la película')
         }
 
@@ -75,8 +75,21 @@ async function actualizarPelicula(req, res) {
     }
 }
 
-function eliminarPelicula(req, res) {
-    res.send("DELETE")
+async function eliminarPelicula(req, res) {
+    
+    const peliculaId = req.params.id
+    console.log(peliculaId)
+    try {
+        const peliculaEliminada = await modelo.eliminarPelicula(peliculaId)
+
+        if (peliculaEliminada){
+            return res.status(200).send(`Pelicula eliminada : ${peliculaId} `)
+        }
+
+    } catch (error) {
+        console.log(`Error al eliminar pelicula (peliculas.controller.js): ${error}`);
+        res.status(500).send(`Error al eliminar pelicula (peliculas.controller.js: ${error})`)
+    }
 }
 
 

@@ -65,9 +65,22 @@ async function actualizarPelicula(id, peliculaEditada){
     }
 }
 
+async function eliminarPelicula(id){
+    try {
+        const pelicula = await peliculasModelo.findById(id)
+        const peliculaEliminada = await pelicula.deleteOne({pelicula})
+        
+        return peliculaEliminada
+
+    } catch (error) {
+        console.log(`[eliminarPelicula]:Error al intentar eliminar pelicula`);
+        return null
+    }
+}
 export default {
     obtenerTodasLasPeliculas,
     obtenerPeliculaPorId,
     guardarPelicula,
-    actualizarPelicula
+    actualizarPelicula,
+    eliminarPelicula
 }

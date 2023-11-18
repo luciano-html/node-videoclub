@@ -1,0 +1,30 @@
+<h1>Signup</h1>
+
+<form action="/auth/signup" method="POST">
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="name" class="form-control" id="name" name="name" aria-describedby="nameHelp" />
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Correo electronico</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" />
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" />
+    </div>
+
+    <div class="mb-3">
+        <label for="confirm_password" class="form-label">Repetir contraseña</label>
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Crear cuenta</button>
+    <small> o </small>
+    <button type="submit" class="btn btn-success">Iniciar Sesion</button>
+
+
+</form>
